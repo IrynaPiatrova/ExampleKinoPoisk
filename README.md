@@ -1,1 +1,1 @@
-# ExampleKinoPoisk
+# Ajax, JavaScript, Css, Html, Bootstrap
