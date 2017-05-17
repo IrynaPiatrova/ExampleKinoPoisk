@@ -19,7 +19,6 @@
             background-repeat: no-repeat;
             background-position: center top;
         }
-
         .search {
             font-family: arial;
             padding: 250px;
@@ -45,48 +44,24 @@
                 type: "GET",
                 url: "http://www.omdbapi.com/?s=" + term + "&r=json",
                 success: function (data) {
-                    $.each(data.Search, function (keyFilm, valFilm) {
-                        var titleName;
-                        var YearName;
-                        var imdbIDName;
-                        var TypeName;
-                        var PosterName;
-                        $.each(valFilm, function (keyAttr, valAttr) {
-                            if(keyAttr == "Title"){
-                                titleName = valAttr;
-                            }
-                            if(keyAttr == "Year"){
-                                YearName = valAttr;
-                            }
-                            if(keyAttr == "imdbID"){
-                                imdbIDName = valAttr;
-                            }
-                            if(keyAttr == "Type"){
-                                TypeName = valAttr;
-                            }
-                            if(keyAttr == "Poster"){
-                                PosterName = valAttr;
-                            }
-                        });
+                    $.each(data.Search, function () {
                         $('#films').append($('<tr>' +
-                                                '<td>' +
-                                                '   <input type="image" src="' + PosterName + '">' +
-                                                '</td>' +
-                                                '<td>' +
-                                                    '<p>Title: ' + titleName + '</p>' +
-                                                    '<p>Year: ' + YearName + '</p>' +
-                                                    '<p>imdbID: ' + imdbIDName + '</p>' +
-                                                    '<p>Type: ' + TypeName + '</p>' +
-                                                '</td>' +
-                                             '</tr>'));
+                                '<td>' +
+                                ' <input type="image" src="' + $(this).attr("Poster") + '">' +
+                                '</td>' +
+                                '<td>' +
+                                '<p>Title: ' + $(this).attr("Title") + '</p>' +
+                                '<p>Year: ' + $(this).attr("Year") + '</p>' +
+                                '<p>imdbID: ' + $(this).attr("imdbID") + '</p>' +
+                                '<p>Type: ' + $(this).attr("Type") + '</p>' +
+                                '</td>' +
+                                '</tr>'));
                     });
 
                 }
             });
         }
     </script>
-
-
 </head>
 <body>
 <form class="form-inline">
